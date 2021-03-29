@@ -6,7 +6,7 @@ PenEditor is a HTML/CSS/JS code editor！You can run code online！
 
 <p align="center">
   <a href="https://github.com/jojowwbb/PenEditor">
-    <img src="https://github.com/jojowwbb/PenEditor/blob/main/static/images/icon.png" alt="Logo" width="200" height="160">
+    <img src="https://github.com/jojowwbb/PenEditor/blob/main/static/images/editor.png" alt="Logo" width="128" height="128">
   </a>
 
   <h3 align="center">Pen Editor</h3>
