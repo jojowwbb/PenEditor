@@ -4,6 +4,9 @@ import init from "./init";
 
 //code mirror 核心
 import * as CodeMirror from "codemirror/lib/codemirror";
+
+import "./formatting";
+
 import "codemirror/lib/codemirror.css";
 
 //主题
@@ -49,6 +52,7 @@ export default (params) => {
 		js: null,
 		css: null,
 		html: null,
+		lib: [],
 	});
 	useEffect(() => {
 		let common = {
@@ -98,6 +102,12 @@ export default (params) => {
 		setMode(name);
 	}, []);
 
+	const onFormat = useCallback((type) => {
+		let editor = staticRef.current[type];
+		editor.execCommand("selectAll");
+		editor.autoFormatRange(editor.getCursor(true), editor.getCursor(false));
+	}, []);
+
 	const onRun = useCallback(() => {
 		let iframe = document.getElementById("preview"),
 			html = staticRef.current.html.getValue(),
@@ -112,8 +122,12 @@ export default (params) => {
 		} else {
 			preview = iframe.document;
 		}
+		let lib = "";
+		staticRef.current.lib.map((item) => {
+			lib += `<script src="${item}"></script>`;
+		});
 		preview.open();
-		preview.write(`${html}<script>${js}</script>`);
+		preview.write(`${lib}${html}<script>${js}</script>`);
 		preview.close();
 		preview.head.innerHTML = `
 			<link rel="stylesheet" href="./static/view.css">
@@ -140,8 +154,31 @@ export default (params) => {
 						</div>
 						<div class="navbar-end">
 							<div class="navbar-item">
+								<input
+									onKeyDown={(e) => {
+										if (e.keyCode == 13) {
+											staticRef.current.lib.push(e.target.value);
+											e.target.value = "";
+										}
+									}}
+									style={{ width: 480 }}
+									class="input"
+									type="text"
+									placeholder="cdn js"
+								/>
+							</div>
+							<div class="navbar-item">
 								<div class="buttons">
-									<a class="button is-primary" onClick={onRun}>
+									<a
+										class="button is-primary"
+										onClick={() => {
+											onFormat("js");
+											onFormat("html");
+											onFormat("css");
+										}}>
+										Format
+									</a>
+									<a class="button" onClick={onRun}>
 										Run
 									</a>
 								</div>
@@ -162,12 +199,7 @@ export default (params) => {
 				</div>
 			</div>
 			<div className="runjs__preview">
-				<iframe
-					id="preview"
-					src="./static/view.html"
-					seamless
-					width="100%"
-					height="100%"></iframe>
+				<iframe id="preview" src="./static/view.html" seamless width="100%" height="100%"></iframe>
 			</div>
 		</div>
 	);

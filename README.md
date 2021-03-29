@@ -1,8 +1,11 @@
 # PenEditor
 
-PenEditor is a HTML/CSS/JS code editor！You can run code online！
+这是一个极简的 HTML/CSS/JS 代码编辑器、在线实时运行、开箱即用
 
-<br />
+[https://jojowwbb.github.io/pen/index.html](https://jojowwbb.github.io/pen/index.html)
+
+
+
 
 <p align="center">
   <a href="https://github.com/jojowwbb/PenEditor">
@@ -15,7 +18,7 @@ PenEditor is a HTML/CSS/JS code editor！You can run code online！
     <br />
     <br />
     <br />
-    <a href="https://jojowwbb.github.io/pen/index.html">查看Demo</a>
+    <a href="https://jojowwbb.github.io/pen/index.html">在线使用</a>
     ·
     <a href="https://github.com/jojowwbb/PenEditor/issues">报告Bug</a>
     ·
@@ -24,14 +27,22 @@ PenEditor is a HTML/CSS/JS code editor！You can run code online！
 
 </p>
 
-### 部署
+### 功能
 
-暂无
+- [x] HTML/CSS/JS 代码编辑
+- [x] 代码格式化
+- [x] HTML编辑器支持emmet
+- [x] 代码提示
+- [x] Sublime 快捷键
+
+
 
 ### 使用到的框架
 
--   [React](https://getbootstrap.com)
+-   [React](https://reactjs.org/)
 -   [CodeMirror](http://codemirror.com)
+-   [Bulma.css](https://bulma.io/)
+
 
 ### 贡献者
 
