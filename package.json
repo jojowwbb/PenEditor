@@ -47,7 +47,8 @@
 		"codemirror": "^5.60.0",
 		"core-js": "^3.1.4",
 		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
+		"react-dom": "^16.13.1",
+		"react-github-btn": "^1.2.0"
 	},
 	"description": ""
 }

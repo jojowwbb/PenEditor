@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useRef, useState } from "react";
-
+import GitHubButton from "react-github-btn";
 import init from "./init";
 
 //code mirror 核心
@@ -42,6 +42,8 @@ import emmet from "@emmetio/codemirror-plugin";
 
 import "./bulma.min.css";
 import "./index.less";
+
+import logo from "./editor.png";
 
 emmet(CodeMirror);
 
@@ -139,7 +141,11 @@ export default (params) => {
 		<div className="runjs">
 			<div className="runjs__header">
 				<nav className="navbar" role="navigation" aria-label="main navigation">
-					<div class="navbar-brand"></div>
+					<div class="navbar-brand" style={{ alignItems: "center" }}>
+						<a style={{ height: 36 }} target="_blank" href="https://github.com/jojowwbb/PenEditor">
+							<img style={{ height: 36 }} src={logo} alt="" />
+						</a>
+					</div>
 					<div id="navbarBasicExample" class="navbar-menu">
 						<div class="navbar-start">
 							<a class={mode == "html" ? "navbar-item selected" : "navbar-item"} name="html" onClick={change}>
@@ -181,6 +187,9 @@ export default (params) => {
 									<a class="button" onClick={onRun}>
 										Run
 									</a>
+									<div style={{ width: 80, textAlign: "right" }}>
+										<GitHubButton href="https://github.com/jojowwbb/PenEditor">Star</GitHubButton>
+									</div>
 								</div>
 							</div>
 						</div>

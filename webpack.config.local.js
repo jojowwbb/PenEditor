@@ -36,6 +36,12 @@ plugins = plugins.concat([
 	}),
 	new CopyWebpackPlugin([
 		{
+			from: "./favicon.ico",
+			to: "favicon.ico",
+		},
+	]),
+	new CopyWebpackPlugin([
+		{
 			from: "static",
 			to: "static",
 		},
@@ -43,6 +49,7 @@ plugins = plugins.concat([
 	new HtmlWebpackPlugin({
 		chunks:['app'],
 		title: "PenEditor",
+		favicon: path.resolve("favicon.ico"),
 		template: "./src/template.html",
 	}),
 ]);
@@ -55,7 +62,7 @@ module.exports = {
 	
 	output: {
 		filename: "modules/[name].[hash].js",
-		publicPath: "/",
+		publicPath: "./",
 		path: path.resolve(__dirname, "dist"),
 	},
 	devtool: process.env.NODE_ENV == "production" ? "" : "source-map",

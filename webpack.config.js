@@ -36,6 +36,12 @@ plugins = plugins.concat([
 	}),
 	new CopyWebpackPlugin([
 		{
+			from: "./favicon.ico",
+			to: "favicon.ico",
+		},
+	]),
+	new CopyWebpackPlugin([
+		{
 			from: "static",
 			to: "static",
 		},
@@ -43,6 +49,7 @@ plugins = plugins.concat([
 	new HtmlWebpackPlugin({
 		chunks:['app'],
 		title: "PenEditor",
+		favicon: path.resolve("favicon.ico"),
 		template: "./src/template.html",
 	}),
 ]);
