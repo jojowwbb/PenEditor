@@ -1,0 +1,11 @@
+{
+	"manifest_version": 2,
+	"name": "PenEditor",
+	"version": "1.0.0",
+	"description": "PenEditor,a editor like pen",
+	"browser_action": {
+		"default_icon": "images/icon.png"
+	},
+	"devtools_page": "index.html",
+	"content_security_policy": "script-src 'unsafe-inline'; object-src 'self';"
+}

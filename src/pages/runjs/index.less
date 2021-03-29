@@ -1,0 +1,59 @@
+@bgcolor: #1e1f26;
+
+.button.is-primary{
+	background-color: #444857;
+}
+.runjs {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	&__header {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 48px;
+		.navbar {
+			background-color: @bgcolor !important;
+			.navbar-item {
+				color: #fff;
+				font-weight: bolder;
+			}
+			a.navbar-item:hover {
+				background-color: lighten(@bgcolor, 10%) !important;
+			}
+			.navbar-item.selected {
+				background-color: lighten(@bgcolor, 10%) !important;
+			}
+		}
+	}
+	&__editor {
+		position: absolute;
+		top: 50px;
+		left: 0;
+		bottom: 0;
+		width: 640px;
+		& > div {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+	&__preview {
+		position: absolute;
+		top: 50px;
+		left: 640px;
+		bottom: 0;
+		right: 0;
+	}
+}
+
+.CodeMirror {
+	height: 100% !important;
+	padding-top: 18px;
+	padding-bottom: 18px;
+}
