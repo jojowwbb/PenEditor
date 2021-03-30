@@ -110,7 +110,7 @@ export default (params) => {
 		editor.autoFormatRange(editor.getCursor(true), editor.getCursor(false));
 	}, []);
 
-	const onRun = useCallback(() => {
+	const onLoad = useCallback(() => {
 		let iframe = document.getElementById("preview"),
 			html = staticRef.current.html.getValue(),
 			css = staticRef.current.css.getValue(),
@@ -135,6 +135,11 @@ export default (params) => {
 			<link rel="stylesheet" href="./static/view.css">
 			<style>${css}</style>
 		`;
+	}, []);
+
+	const onRun = useCallback(() => {
+		let iframe = document.getElementById("preview");
+		iframe.contentWindow.location.reload(true);
 	}, []);
 
 	return (
@@ -208,7 +213,7 @@ export default (params) => {
 				</div>
 			</div>
 			<div className="runjs__preview">
-				<iframe id="preview" src="./static/view.html" seamless width="100%" height="100%"></iframe>
+				<iframe onLoad={onLoad} id="preview" src="./static/view.html" seamless width="100%" height="100%"></iframe>
 			</div>
 		</div>
 	);
