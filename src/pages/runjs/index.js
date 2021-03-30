@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useRef, useState } from "react";
+import { saveAs } from "file-saver";
 import GitHubButton from "react-github-btn";
 import init from "./init";
 
@@ -104,6 +105,32 @@ export default (params) => {
 		setMode(name);
 	}, []);
 
+	const onDownload = useCallback(() => {
+		let lib = "";
+		staticRef.current.lib.map((item) => {
+			lib += `<script src="${item}"></script>`;
+		});
+		let reset = `html {
+			width: 100%;
+			height: 100%;
+		}
+		body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+		}`;
+		var html = `
+				<!DOCTYPE html>
+		<html lang="en">
+			<head><style>${reset}</style><style>${staticRef.current.css.getValue()}</style></head>
+			<body>${staticRef.current.html.getValue()}${lib}<script>${staticRef.current.js.getValue()}</script></body>
+		</html>`;
+
+		var blob = new Blob([html], { type: "text/html; charset=utf-8" });
+		saveAs(blob, `PenEditor-${new Date().getTime()}.html`);
+
+	}, []);
+
 	const onFormat = useCallback((type) => {
 		let editor = staticRef.current[type];
 		editor.execCommand("selectAll");
@@ -160,7 +187,7 @@ export default (params) => {
 								Css
 							</a>
 							<a class={mode == "js" ? "navbar-item selected" : "navbar-item"} name="js" onClick={change}>
-								Javascript
+								JavaScript
 							</a>
 						</div>
 						<div class="navbar-end">
@@ -189,7 +216,10 @@ export default (params) => {
 										}}>
 										Format
 									</a>
-									<a class="button" onClick={onRun}>
+									<a class="button is-primary" onClick={onDownload}>
+										Download
+									</a>
+									<a class="button is-success" onClick={onRun}>
 										Run
 									</a>
 									<div style={{ width: 80, textAlign: "right" }}>
