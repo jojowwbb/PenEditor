@@ -20,7 +20,11 @@ export default {
     <h1>Pen Editor</h1>
 </div>`,
 	javascript: `function main(){
-    console.log('hello world');
+    console.log('hello log');
+    console.error(new Error('error msg'));
+    console.error('error %o',new Error('error msg'));
+    console.info('hello info');
+    console.info({name:'info'});
 }
 main();`,
 };

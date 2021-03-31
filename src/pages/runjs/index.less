@@ -1,6 +1,6 @@
 @bgcolor: #1e1f26;
 
-.button.is-primary{
+.button.is-primary {
 	background-color: #444857;
 }
 .runjs {
@@ -33,7 +33,7 @@
 		position: absolute;
 		top: 50px;
 		left: 0;
-		bottom: 0;
+		bottom: 200px;
 		width: 640px;
 		& > div {
 			position: absolute;
@@ -47,8 +47,39 @@
 		position: absolute;
 		top: 50px;
 		left: 640px;
-		bottom: 0;
+		bottom: 200px;
 		right: 0;
+	}
+	&__console {
+		position: absolute;
+		height: 200px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: #333642;
+		overflow-y: auto;
+		.log-wrap {
+			height: 32px;
+			display: flex;
+			align-items: center;
+			color: rgba(255, 255, 255, 0.4);
+			padding-left: 10px;
+			border-top: 1px solid #1e1f26;
+			.log-type {
+				&__log {
+					margin-right: 12px;
+					color: #339933;
+				}
+				&__info {
+					margin-right: 12px;
+					color: #3399ff;
+				}
+				&__error {
+					margin-right: 12px;
+					color: #ff0000;
+				}
+			}
+		}
 	}
 }
 

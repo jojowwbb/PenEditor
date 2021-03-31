@@ -5,13 +5,15 @@
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development webpack-dev-server --inline --mode=development",
 		"build": "INLINE_RUNTIME_CHUNK=false cross-env NODE_ENV=production webpack --mode=production --progress",
-		"build:local": "cross-env NODE_ENV=production webpack --mode=production --progress --config webpack.config.local.js"
+		"build:local": "cross-env NODE_ENV=production webpack --mode=production --progress --config webpack.config.local.js",
+		"build:console": "babel static/console.js -d static"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@babel/core": "^7.5.5",
+		"@babel/cli": "^7.13.14",
+		"@babel/core": "^7.13.14",
 		"@babel/plugin-proposal-class-properties": "^7.12.1",
 		"@babel/plugin-syntax-dynamic-import": "^7.8.3",
 		"@babel/preset-env": "^7.5.5",

@@ -48,6 +48,14 @@ import logo from "./editor.png";
 
 emmet(CodeMirror);
 
+
+
+function createNode(htmlStr) {
+	var div = document.createElement("div");
+	div.innerHTML = htmlStr;
+	return div.childNodes[0];
+}
+
 export default (params) => {
 	let [mode, setMode] = useState("js");
 
@@ -58,6 +66,14 @@ export default (params) => {
 		lib: [],
 	});
 	useEffect(() => {
+		window.addEventListener("message", function (data) {
+			if (data.data &&['log','error','info'].includes(data.data.type)) {
+				let console=document.getElementById("console");
+				console.appendChild(createNode(data.data.data));
+				console.scrollTop = console.scrollHeight;
+			}
+		});
+
 		let common = {
 			lineWrapping: true,
 			foldGutter: true,
@@ -96,7 +112,6 @@ export default (params) => {
 			...common,
 		});
 		staticRef.current.css.setOption("value", init.css);
-
 		onRun();
 	}, []);
 
@@ -128,7 +143,6 @@ export default (params) => {
 
 		var blob = new Blob([html], { type: "text/html; charset=utf-8" });
 		saveAs(blob, `PenEditor-${new Date().getTime()}.html`);
-
 	}, []);
 
 	const onFormat = useCallback((type) => {
@@ -245,6 +259,7 @@ export default (params) => {
 			<div className="runjs__preview">
 				<iframe onLoad={onLoad} id="preview" src="./static/view.html" seamless width="100%" height="100%"></iframe>
 			</div>
+			<div className="runjs__console" id="console"></div>
 		</div>
 	);
 };
