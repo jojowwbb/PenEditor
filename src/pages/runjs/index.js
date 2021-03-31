@@ -48,13 +48,29 @@ import logo from "./editor.png";
 
 emmet(CodeMirror);
 
-
-
 function createNode(htmlStr) {
 	var div = document.createElement("div");
 	div.innerHTML = htmlStr;
 	return div.childNodes[0];
 }
+
+let codeMirrorCommonOption = {
+	lineWrapping: true,
+	foldGutter: true,
+	gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+	matchBrackets: true,
+	smartIndent: true,
+	indentUnit: 4,
+	theme: "material", //编辑器主题
+	keymap: "sublime",
+	extraKeys: {
+		Tab: "emmetExpandAbbreviation",
+		Esc: "emmetResetAbbreviation",
+		Enter: "emmetInsertLineBreak",
+		Ctrl: "autocomplete",
+	},
+	lineNumbers: true,
+};
 
 export default (params) => {
 	let [mode, setMode] = useState("js");
@@ -63,53 +79,35 @@ export default (params) => {
 		js: null,
 		css: null,
 		html: null,
-		lib: [],
+		lib: ["static/console.js", "static/babel.min.js", "https://unpkg.com/react/umd/react.development.js", "https://unpkg.com/react-dom/umd/react-dom.development.js"],
 	});
+
+	
 	useEffect(() => {
+
 		window.addEventListener("message", function (data) {
-			if (data.data &&['log','error','info'].includes(data.data.type)) {
-				let console=document.getElementById("console");
+			if (data.data && ["log", "error", "info"].includes(data.data.type)) {
+				let console = document.getElementById("console");
 				console.appendChild(createNode(data.data.data));
 				console.scrollTop = console.scrollHeight;
 			}
 		});
 
-		let common = {
-			lineWrapping: true,
-			foldGutter: true,
-			gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
-			matchBrackets: true,
-			smartIndent: true,
-			extraKeys: {
-				Tab: "emmetExpandAbbreviation",
-				Esc: "emmetResetAbbreviation",
-				Enter: "emmetInsertLineBreak",
-				Ctrl: "autocomplete",
-			},
-			lineNumbers: true,
-		};
-
 		staticRef.current.js = CodeMirror.fromTextArea(document.getElementById("js"), {
 			mode: "javascript", //编辑器语言
-			theme: "material", //编辑器主题
-			keymap: "sublime",
-			...common,
+			...codeMirrorCommonOption,
 		});
 		staticRef.current.js.setOption("value", init.javascript);
 
 		staticRef.current.html = CodeMirror.fromTextArea(document.getElementById("html"), {
 			mode: "htmlmixed",
-			theme: "material", //编辑器主题
-			keymap: "sublime",
-			...common,
+			...codeMirrorCommonOption,
 		});
 		staticRef.current.html.setOption("value", init.html);
 
 		staticRef.current.css = CodeMirror.fromTextArea(document.getElementById("css"), {
 			mode: "css", //编辑器语言
-			theme: "material", //编辑器主题
-			keymap: "sublime",
-			...common,
+			...codeMirrorCommonOption,
 		});
 		staticRef.current.css.setOption("value", init.css);
 		onRun();
@@ -170,7 +168,7 @@ export default (params) => {
 			lib += `<script src="${item}"></script>`;
 		});
 		preview.open();
-		preview.write(`${lib}${html}<script>${js}</script>`);
+		preview.write(`${lib}${html}<script  type="text/babel" data-presets="react">${js}</script>`);
 		preview.close();
 		preview.head.innerHTML = `
 			<link rel="stylesheet" href="./static/view.css">
@@ -236,8 +234,10 @@ export default (params) => {
 									<a class="button is-success" onClick={onRun}>
 										Run
 									</a>
-									<div style={{ width: 80, textAlign: "right" }}>
-										<GitHubButton href="https://github.com/jojowwbb/PenEditor">Star</GitHubButton>
+									<div style={{ width: 100, textAlign: "right" }}>
+										<GitHubButton href="https://github.com/jojowwbb/PenEditor" data-show-count="true" aria-label="Star jojowwbb/PenEditor on GitHub">
+											Star
+										</GitHubButton>
 									</div>
 								</div>
 							</div>

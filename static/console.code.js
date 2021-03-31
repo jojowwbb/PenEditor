@@ -66,4 +66,5 @@ var console = {
 		let type = "info";
 		console.sendMessage(type, genOutput(str, rest, type));
 	},
+	warn: function () {},
 };

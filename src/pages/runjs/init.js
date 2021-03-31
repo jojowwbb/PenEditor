@@ -15,16 +15,24 @@ export default {
     font-size: 120px;
     mix-blend-mode: overlay;
 }`,
-	html: `<div class="blend">
-    <img src="https://cdn.pixabay.com/photo/2016/12/11/12/02/bled-1899264_960_720.jpg" />
-    <h1>Pen Editor</h1>
-</div>`,
-	javascript: `function main(){
-    console.log('hello log');
-    console.error(new Error('error msg'));
-    console.error('error %o',new Error('error msg'));
-    console.info('hello info');
-    console.info({name:'info'});
-}
-main();`,
+	html: `<div id="root"></div>`,
+    javascript:`function App() {
+        console.log('hello log');
+        return (
+            <div class="blend">
+                <img src="https://cdn.pixabay.com/photo/2016/12/11/12/02/bled-1899264_960_720.jpg" />
+                <h1>Pen Editor</h1>
+            </div>
+        );
+    }
+    ReactDOM.render(<App />, document.getElementById("root"));
+`
+// 	javascript: `function main(){
+//     console.log('hello log');
+//     console.error(new Error('error msg'));
+//     console.error('error %o',new Error('error msg'));
+//     console.info('hello info');
+//     console.info({name:'info'});
+// }
+// main();`,
 };
