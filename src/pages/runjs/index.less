@@ -1,8 +1,56 @@
-@bgcolor: #1e1f26;
+@bgcolor: #333333;
+@cardColor: #36404a;
 
-.button.is-primary {
-	background-color: #444857;
+.react-tooltip-lite {
+	background: #000;
+	color: white;
+  }
+  
+  .react-tooltip-lite-arrow {
+	border-color: #000;
+  }
+
+.center {
+	display: flex;
+	align-items: center;
 }
+input {
+	background: #94a0ad;
+	border: none;
+	height: 32px;
+	border-radius: 10px;
+	padding: 3px 10px;
+	color: #fff;
+}
+input:focus {
+	outline: none;
+}
+.tool-icon {
+	color: rgba(255, 255, 255, 0.75);
+	width: 32px;
+	height: 32px;
+	display: flex;
+	border-radius: 8px;
+	margin-right: 10px;
+	cursor: pointer;
+	align-items: center;
+	justify-content: center;
+	&.selected {
+		background: #535a63;
+	}
+	&:hover {
+		background: #535a63;
+	}
+}
+
+.cm-s-material .CodeMirror-gutters,
+.cm-s-material.CodeMirror {
+	background: @cardColor !important;
+}
+.cm-s-material.CodeMirror {
+	border-radius: 8px;
+}
+
 .runjs {
 	position: absolute;
 	top: 0;
@@ -11,30 +59,28 @@
 	bottom: 0;
 	&__header {
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 48px;
-		.navbar {
-			background-color: @bgcolor !important;
-			.navbar-item {
-				color: #fff;
-				font-weight: bolder;
-			}
-			a.navbar-item:hover {
-				background-color: lighten(@bgcolor, 10%) !important;
-			}
-			.navbar-item.selected {
-				background-color: lighten(@bgcolor, 10%) !important;
-			}
+		top: 10px;
+		left: 10px;
+		right: 10px;
+		height: 42px;
+		border-radius: 8px;
+		display: flex;
+		align-items: center;
+		background: @cardColor;
+		.menu {
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
 		}
 	}
 	&__editor {
 		position: absolute;
-		top: 50px;
-		left: 0;
-		bottom: 200px;
-		width: 640px;
+		top: 62px;
+		left: 10px;
+		bottom: 220px;
+		width: 650px;
+		border-radius: 8px;
+		background: @cardColor;
 		& > div {
 			position: absolute;
 			top: 0;
@@ -45,38 +91,41 @@
 	}
 	&__preview {
 		position: absolute;
-		top: 50px;
-		left: 640px;
-		bottom: 200px;
-		right: 0;
+		top: 62px;
+		right: 10px;
+		bottom: 220px;
+		left: 670px;
+		border-radius: 8px;
+		background: @cardColor;
 	}
 	&__console {
 		position: absolute;
+		right: 10px;
 		height: 200px;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		background: #333642;
+		bottom: 10px;
+		left: 10px;
+		border-radius: 8px;
 		overflow-y: auto;
+		background: @cardColor;
 		.log-wrap {
 			height: 32px;
 			display: flex;
 			align-items: center;
 			color: rgba(255, 255, 255, 0.4);
-			padding-left: 10px;
-			border-top: 1px solid #1e1f26;
+			margin: 5px 10px;
+			border-bottom: 1px solid #454e58;
 			.log-type {
 				&__log {
 					margin-right: 12px;
-					color: #339933;
+					color: #57b99d;
 				}
 				&__info {
 					margin-right: 12px;
-					color: #3399ff;
+					color: #5caed6;
 				}
 				&__error {
 					margin-right: 12px;
-					color: #ff0000;
+					color: #e0606f;
 				}
 			}
 		}
