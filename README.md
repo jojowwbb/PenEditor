@@ -6,15 +6,11 @@
 
 [https://jojowwbb.github.io/pen/index.html](https://jojowwbb.github.io/pen/index.html)
 
-
-
-
-
 <p align="center">
   <a href="https://github.com/jojowwbb/PenEditor">
-    <img src="https://z3.ax1x.com/2021/04/01/cV436J.png" alt="Logo" width="128" height="128">
+    <img src="https://z3.ax1x.com/2021/04/01/cV436J.png" alt="Logo" width="128" height="128"/>
   </a>
-
+</p>
 
   <h3 align="center">Pen Editor</h3>
   <p align="center">
@@ -28,23 +24,21 @@
     ·
     <a href="https://github.com/jojowwbb/PenEditor/issues">提出新特性</a>
   </p>
-
-
-
+  <p align="center">
+  <img src="https://z3.ax1x.com/2021/04/02/cm1vz4.png" alt="Logo" width="100%"/>
+</p>
 
 ### 功能
 
-- [x] HTML/CSS/JS 代码编辑
-- [x] 代码格式化
-- [x] HTML编辑器支持emmet
-- [x] 代码提示
-- [x] Sublime 快捷键
-- [x] 下载html保存
-- [x] console
-- [x] 内置babel
-- [x] 内置react、无需单独引用
-
-
+-   [x] HTML/CSS/JS 代码编辑
+-   [x] 代码格式化
+-   [x] HTML 编辑器支持 emmet
+-   [x] 代码提示
+-   [x] Sublime 快捷键
+-   [x] 下载 html 保存
+-   [x] console
+-   [x] 内置 babel
+-   [x] 内置 react、无需单独引用
 
 ### 本地部署
 
@@ -58,7 +52,7 @@
 
 #### 启动
 
-> npm run dev 
+> npm run dev
 
 #### 访问
 
@@ -69,7 +63,6 @@ http://127.0.0.1:8099
 -   [React](https://reactjs.org/)
 -   [CodeMirror](http://codemirror.com)
 -   [Bulma.css](https://bulma.io/)
-
 
 ### 贡献者
 
