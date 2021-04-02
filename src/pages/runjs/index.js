@@ -110,6 +110,9 @@ export default (params) => {
 			...codeMirrorCommonOption,
 		});
 		staticRef.current.css.setOption("value", init.css);
+		onFormat('js');
+		onFormat('css');
+		onFormat('html');
 		onRun();
 	}, []);
 
@@ -147,6 +150,7 @@ export default (params) => {
 		let editor = staticRef.current[type];
 		editor.execCommand("selectAll");
 		editor.autoFormatRange(editor.getCursor(true), editor.getCursor(false));
+		//editor.execCommand("undoSelection");
 	}, []);
 
 	const onLoad = useCallback(() => {
