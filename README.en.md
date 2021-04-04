@@ -26,6 +26,10 @@ PenEditor is a simple HTML / CSS / JS code editor, works online in real-time, an
     <a href="https://github.com/jojowwbb/PenEditor/issues">Request Feature</a>
   </p>
 
+  <p align="center">
+  <img src="https://z3.ax1x.com/2021/04/02/cm1vz4.png" alt="Logo" width="100%"/>
+</p>
+
 
 ## Features
 
