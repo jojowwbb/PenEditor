@@ -1,6 +1,6 @@
 # Pen Editor
 
-[![GitHub code size](https://img.shields.io/github/languages/code-size/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)[![GitHub license](https://img.shields.io/github/license/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)[![GitHub issues](https://img.shields.io/github/issues-raw/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)
+[![GitHub code size](https://img.shields.io/github/languages/code-size/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)  [![GitHub license](https://img.shields.io/github/license/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)  [![GitHub issues](https://img.shields.io/github/issues-raw/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)
 
 Simple Online Code Editor! Support Rect, HTML, CSS, Javascript | PenEditor
 
@@ -42,7 +42,8 @@ PenEditor is a simple HTML / CSS / JS code editor, works online in real-time, an
 -   [x] Simple console(log,error,info,warn)
 -   [x] Built-in babel
 -   [x] Built-in react, no need to quote separately
--   [ ] Download HTML save
+-   [x] Download HTML save
+-   [x] works online in real-time
 
 
 ## Online
