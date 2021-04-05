@@ -114,22 +114,31 @@ input:focus {
 		overflow-y: auto;
 		background: @cardColor;
 		.log-wrap {
-			height: 32px;
+			min-height: 28px;
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			color: rgba(255, 255, 255, 0.4);
 			margin: 5px 10px;
 			border-bottom: 1px solid #454e58;
+			.log-str{
+				flex:1;
+			}
 			.log-type {
 				&__log {
+					width: 230px;
+					flex-shrink: 0;
 					margin-right: 12px;
 					color: #57b99d;
 				}
 				&__info {
+					width: 230px;
+					flex-shrink: 0;
 					margin-right: 12px;
 					color: #5caed6;
 				}
 				&__error {
+					width: 230px;
+					flex-shrink: 0;
 					margin-right: 12px;
 					color: #e0606f;
 				}

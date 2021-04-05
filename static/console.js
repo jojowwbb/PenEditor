@@ -1,12 +1,17 @@
 "use strict";
 
-function is(obj, type) {
+function _jj_code_is(obj, type) {
   return Object.prototype.toString.call(obj) === "[object ".concat(type, "]");
 }
 
-function parseOutput(place, arr, type) {
+function _jj_code_time() {
+  var n = new Date();
+  return "".concat(n.toLocaleDateString(), " ").concat(n.getHours(), ":").concat(n.getMinutes(), ":").concat(n.getSeconds(), ":").concat(n.getMilliseconds());
+}
+
+function _jj_code_parseOutput(place, arr, type) {
   var index = -1;
-  var result = "<div class=\"log-wrap\"><span class=\"log-type__".concat(type, "\">").concat(new Date().toLocaleString(), "</span><span class=\"log-type__").concat(type, "\"> [ ").concat(type, " ]:</span>");
+  var result = "<div class=\"log-wrap\"><span class=\"log-type__".concat(type, "\">").concat(_jj_code_time(), " [ ").concat(type, " ]:</span>");
   place.map(function (str) {
     if (str == "%s") {
       index = index + 1;
@@ -17,9 +22,9 @@ function parseOutput(place, arr, type) {
     } else if (str == "%o") {
       index = index + 1;
 
-      if (is(arr[index], "Object")) {
+      if (_jj_code_is(arr[index], "Object")) {
         result += "<span class=\"log-str\">".concat(JSON.stringify(arr[index]), "</span>");
-      } else if (is(arr[index], "Function")) {
+      } else if (_jj_code_is(arr[index], "Function")) {
         result += "<span class=\"log-str\">".concat(arr[index].toString(), "</span>");
       }
     } else {
@@ -34,17 +39,17 @@ function genOutput(str, rest, type) {
   var output = "";
 
   if (typeof str === "string") {
-    output = parseOutput(str.split(/(%s|%f|%o|%d)/), rest, type);
+    output = _jj_code_parseOutput(str.split(/(%s|%f|%o|%d)/), rest, type);
   } else {
     var objstr = "";
 
-    if (is(str, "Object")) {
+    if (_jj_code_is(str, "Object")) {
       objstr = "<span class=\"log-str\">".concat(JSON.stringify(str), "</span>");
     } else {
       objstr = "<span class=\"log-str\">".concat(str.toString(), "</span>");
     }
 
-    output = "<div class=\"log-wrap\"><span class=\"log-type__".concat(type, "\">").concat(new Date().toLocaleString(), "</span><span class=\"log-type__").concat(type, "\"> [ ").concat(type, " ]:</span><span class=\"log-str\">").concat(objstr, "</span></div>");
+    output = "<div class=\"log-wrap\"><span class=\"log-type__".concat(type, "\">").concat(_jj_code_time(), " [ ").concat(type, " ]:</span><span class=\"log-str\">").concat(objstr, "</span></div>");
   }
 
   return output;

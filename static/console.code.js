@@ -1,10 +1,15 @@
-function is(obj, type) {
+function _jj_code_is(obj, type) {
 	return Object.prototype.toString.call(obj) === `[object ${type}]`;
 }
 
-function parseOutput(place, arr, type) {
+function _jj_code_time(){
+	let n=new Date();
+	return `${n.toLocaleDateString} ${n.getHours()}:${n.getMinutes()}:${n.getSeconds()}:${n.getMilliseconds()}`
+}
+
+function _jj_code_parseOutput(place, arr, type) {
 	let index = -1;
-	let result = `<div class="log-wrap"><span class="log-type__${type}">${new Date().toLocaleString()}</span><span class="log-type__${type}"> [ ${type} ]:</span>`;
+	let result = `<div class="log-wrap"><span class="log-type__${type}">${_jj_code_time()} [ ${type} ]:</span>`;
 	place.map((str) => {
 		if (str == "%s") {
 			index = index + 1;
@@ -14,9 +19,9 @@ function parseOutput(place, arr, type) {
 			result += `<span class="log-str">${Number(arr[index])}</span>`;
 		} else if (str == "%o") {
 			index = index + 1;
-			if (is(arr[index], "Object")) {
+			if (_jj_code_is(arr[index], "Object")) {
 				result += `<span class="log-str">${JSON.stringify(arr[index])}</span>`;
-			} else if (is(arr[index], "Function")) {
+			} else if (_jj_code_is(arr[index], "Function")) {
 				result += `<span class="log-str">${arr[index].toString()}</span>`;
 			}
 		} else {
@@ -30,16 +35,16 @@ function parseOutput(place, arr, type) {
 function genOutput(str, rest, type) {
 	let output = "";
 	if (typeof str === "string") {
-		output = parseOutput(str.split(/(%s|%f|%o|%d)/), rest, type);
+		output = _jj_code_parseOutput(str.split(/(%s|%f|%o|%d)/), rest, type);
 	} else {
 		let objstr = "";
-		if (is(str, "Object")) {
+		if (_jj_code_is(str, "Object")) {
 			objstr = `<span class="log-str">${JSON.stringify(str)}</span>`;
 		} else {
 			objstr = `<span class="log-str">${str.toString()}</span>`;
 		}
 
-		output = `<div class="log-wrap"><span class="log-type__${type}">${new Date().toLocaleString()}</span><span class="log-type__${type}"> [ ${type} ]:</span><span class="log-str">${objstr}</span></div>`;
+		output = `<div class="log-wrap"><span class="log-type__${type}">${_jj_code_time()} [ ${type} ]:</span><span class="log-str">${objstr}</span></div>`;
 	}
 	return output;
 }
