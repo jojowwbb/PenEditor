@@ -2,7 +2,7 @@
 
 [![GitHub code size](https://img.shields.io/github/languages/code-size/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)  [![GitHub license](https://img.shields.io/github/license/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)  [![GitHub issues](https://img.shields.io/github/issues-raw/jojowwbb/PenEditor)](https://github.com/jojowwbb/PenCode)
 
-Simple Online Code Editor! Support Rect, HTML, CSS, Javascript | PenEditor
+ :rocket: ​Simple Online Code Editor! Support Rect, HTML, CSS, Javascript | PenEditor
 
 PenEditor is a simple HTML / CSS / JS code editor, works online in real-time, and out of the box! PenEditor.js is an open-source online HTML / CSS / JavaScript code editor (Code Playground) inspired by Codepen.io.
 
