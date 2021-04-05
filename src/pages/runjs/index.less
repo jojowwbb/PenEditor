@@ -4,11 +4,11 @@
 .react-tooltip-lite {
 	background: #000;
 	color: white;
-  }
-  
-  .react-tooltip-lite-arrow {
+}
+
+.react-tooltip-lite-arrow {
 	border-color: #000;
-  }
+}
 
 .center {
 	display: flex;
@@ -50,11 +50,17 @@ input:focus {
 .cm-s-material.CodeMirror {
 	border-radius: 8px;
 }
-.checkbox{
+.checkbox {
 	margin-left: 20px;
 	display: flex;
 	align-items: center;
 	color: #999;
+}
+
+.log-set() {
+	width: 250px;
+	flex-shrink: 0;
+	margin-right: 12px;
 }
 
 .runjs {
@@ -120,26 +126,24 @@ input:focus {
 			color: rgba(255, 255, 255, 0.4);
 			margin: 5px 10px;
 			border-bottom: 1px solid #454e58;
-			.log-str{
-				flex:1;
+			.log-str {
+				flex: 1;
 			}
 			.log-type {
+				&__warn {
+					.log-set();
+					color: orange;
+				}
 				&__log {
-					width: 230px;
-					flex-shrink: 0;
-					margin-right: 12px;
+					.log-set();
 					color: #57b99d;
 				}
 				&__info {
-					width: 230px;
-					flex-shrink: 0;
-					margin-right: 12px;
+					.log-set();
 					color: #5caed6;
 				}
 				&__error {
-					width: 230px;
-					flex-shrink: 0;
-					margin-right: 12px;
+					.log-set();
 					color: #e0606f;
 				}
 			}

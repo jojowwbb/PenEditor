@@ -19,6 +19,8 @@ export default {
 	html: `<div id="root"></div>`,
 	javascript: `function App() {
         console.log('Pen Editor');
+        console.info('a simple code editor');
+        console.warn('a simple code editor');
         console.error('a simple code editor');
         return (
             <div className="blend">

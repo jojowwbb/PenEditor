@@ -88,7 +88,7 @@ export default () => {
 
 	useEffect(() => {
 		window.addEventListener("message", function (data) {
-			if (data.data && ["log", "error", "info"].includes(data.data.type)) {
+			if (data.data && ["log", "error", "info",'warn'].includes(data.data.type)) {
 				let console = document.getElementById("console");
 				console.appendChild(createNode(data.data.data));
 				console.scrollTop = console.scrollHeight;

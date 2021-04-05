@@ -15,27 +15,27 @@ function _jj_code_parseOutput(place, arr, type) {
   place.map(function (str) {
     if (str == "%s") {
       index = index + 1;
-      result += "<span class=\"log-str\">".concat(arr[index].toString(), "</span>");
+      result += arr[index].toString();
     } else if (str == "%f" || str == "%d") {
       index = index + 1;
-      result += "<span class=\"log-str\">".concat(Number(arr[index]), "</span>");
+      result += Number(arr[index]);
     } else if (str == "%o") {
       index = index + 1;
 
       if (_jj_code_is(arr[index], "Object")) {
-        result += "<span class=\"log-str\">".concat(JSON.stringify(arr[index]), "</span>");
+        result += JSON.stringify(arr[index]);
       } else if (_jj_code_is(arr[index], "Function")) {
-        result += "<span class=\"log-str\">".concat(arr[index].toString(), "</span>");
+        result += arr[index].toString();
       }
     } else {
-      result += "<span class=\"log-str\">".concat(str, "</span>");
+      result += str;
     }
   });
   result += "</div>";
   return result;
 }
 
-function genOutput(str, rest, type) {
+function _jj_code_genOutput(str, rest, type) {
   var output = "";
 
   if (typeof str === "string") {
@@ -44,9 +44,9 @@ function genOutput(str, rest, type) {
     var objstr = "";
 
     if (_jj_code_is(str, "Object")) {
-      objstr = "<span class=\"log-str\">".concat(JSON.stringify(str), "</span>");
+      objstr = "<span class=\"log-str\">".concat(str.message ? str.message : JSON.stringify(str), "</span>");
     } else {
-      objstr = "<span class=\"log-str\">".concat(str.toString(), "</span>");
+      objstr = "<span class=\"log-str\">".concat(str.message ? str.message : str.toString(), "</span>");
     }
 
     output = "<div class=\"log-wrap\"><span class=\"log-type__".concat(type, "\">").concat(_jj_code_time(), " [ ").concat(type, " ]:</span><span class=\"log-str\">").concat(objstr, "</span></div>");
@@ -69,7 +69,7 @@ var console = {
       rest[_key - 1] = arguments[_key];
     }
 
-    console.sendMessage(type, genOutput(str, rest, type));
+    console.sendMessage(type, _jj_code_genOutput(str, rest, type));
   },
   error: function error(str) {
     var type = "error";
@@ -78,7 +78,7 @@ var console = {
       rest[_key2 - 1] = arguments[_key2];
     }
 
-    console.sendMessage(type, genOutput(str, rest, type));
+    console.sendMessage(type, _jj_code_genOutput(str, rest, type));
   },
   info: function info(str) {
     var type = "info";
@@ -87,7 +87,18 @@ var console = {
       rest[_key3 - 1] = arguments[_key3];
     }
 
-    console.sendMessage(type, genOutput(str, rest, type));
+    console.sendMessage(type, _jj_code_genOutput(str, rest, type));
   },
-  warn: function warn() {}
+  warn: function warn(str) {
+    var type = "warn";
+
+    for (var _len4 = arguments.length, rest = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+      rest[_key4 - 1] = arguments[_key4];
+    }
+
+    console.sendMessage(type, _jj_code_genOutput(str, rest, type));
+  }
 };
+window.addEventListener("error", function (error) {
+  console.error(error);
+});
